@@ -6,8 +6,6 @@
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
-# [Hyperapp](https://github.com/hyperapp/hyperapp) and [Parcel bundler](https://github.com/parcel-bundler/parcel)
-
 ## [Demo](https://pap.as/slaeditor/)
 
 Read more about it at Medium [here](https://medium.com/@marcusasplund/single-line-application-bc3b9d3c9269)
@@ -15,6 +13,8 @@ Read more about it at Medium [here](https://medium.com/@marcusasplund/single-lin
 A single line application 'editor'
 
 Offline support with service worker
+
+Made with [Hyperapp](https://github.com/hyperapp/hyperapp) and [Parcel bundler](https://github.com/parcel-bundler/parcel)
 
 TODO: [a bug in parcel](https://github.com/parcel-bundler/parcel/issues/235) rewrites the manifest.json to a js file so the pwa requirements fails.
 
