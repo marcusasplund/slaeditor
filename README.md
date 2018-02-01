@@ -1,7 +1,6 @@
 # slaeditor
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/marcusasplund/slaeditor.svg)](https://greenkeeper.io/)
-
 [![GitHub issues](https://img.shields.io/github/issues/marcusasplund/slaeditor.svg)](https://github.com/marcusasplund/slaeditor/issues)
 [![Build status](https://travis-ci.org/marcusasplund/slaeditor.svg?branch=master)](https://travis-ci.org/marcusasplund/slaeditor)
 [![dependencies](https://david-dm.org/marcusasplund/slaeditor.svg)](https://david-dm.org/marcusasplund/slaeditor)
