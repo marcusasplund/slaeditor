@@ -55,6 +55,7 @@ const view = (state, actions) => (
         </code>
       </pre>
     </div>
+    <p>You can look at the code <a href='https://github.com/marcusasplund/slaeditor'>here</a></p>
   </div>
 )
 
