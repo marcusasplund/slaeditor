@@ -1,0 +1,40 @@
+{
+  "homepage": "https://github.com/marcusasplund/slaeditor#readme",
+  "license": "MIT",
+  "main": "src/index.js",
+  "name": "hyperapp-todo-parcel",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/marcusasplund/slaeditor.git"
+  },
+  "scripts": {
+    "start": "standard && parcel src/index.html -p 3000 --open",
+    "build": "standard && parcel build src/index.html -d build --public-url ./ && workbox generate:sw"
+  },
+  "version": "0.0.1",
+  "author": "Marcus Asplund <marcus@greatname.se> (@marcusasplund)",
+  "bugs": {
+    "url": "https://github.com/marcusasplund/slaeditor/issues"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-transform-h-jsx": "^1.0.0",
+    "babel-preset-env": "^1.6.1",
+    "node-sass": "^4.7.2",
+    "parcel-bundler": "^1.5.1",
+    "standard": "*",
+    "workbox-build": "^2.1.2",
+    "workbox-cli": "^2.1.2"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "dist/",
+      "build/"
+    ]
+  },
+  "dependencies": {
+    "hyperapp": "^1.0.2",
+    "lodash.debounce": "^4.0.8"
+  }
+}

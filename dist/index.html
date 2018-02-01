@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SLA editor</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SLA editor | Make your apps single line applications">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+  <link rel="apple-touch-icon" sizes="180x180" href="/dist/7191a1720b670e164b782c29868cab68.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/dist/77c80de25747f63cfc55ccaf00a227fd.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/dist/43f4dae60750367b58a6ed78c572c9a3.png">
+  <link rel="manifest" href="/dist/c45ded56f38c80f75a83acc56eff7916.js">
+  <link rel="mask-icon" href="/dist/4de2abea8812667c96d668b3ed44367f.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="/dist/hyperapp-todo-parcel.css"></head>
+<body>
+  <script src="/dist/hyperapp-todo-parcel.js" async=""></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+      .then(function (registration) {
+        console.log('Service Worker registration successful with scope: ',
+        registration.scope)
+      })
+      .catch(function (err) {
+        console.log('Service Worker registration failed: ', err)
+      })
+    }
+  </script>
+</body>
+</html>
