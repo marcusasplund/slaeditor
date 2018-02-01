@@ -34,3 +34,6 @@ node_modules
 
 # Compiled stuff
 build
+
+# Cache
+.cache
