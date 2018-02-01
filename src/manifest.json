@@ -1,13 +1,13 @@
 {
   "dir": "ltr",
   "lang": "en",
-  "name": "HyperApp ToDo",
+  "name": "SLA editor",
   "scope": "./",
   "display": "fullscreen",
   "start_url": "./",
-  "short_name": "ToDo",
+  "short_name": "SLA",
   "theme_color": "white",
-  "description": "simple crud todo app",
+  "description": "SLA editor",
   "orientation": "portrait",
   "background_color": "white",
   "icons": [{

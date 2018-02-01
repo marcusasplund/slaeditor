@@ -2,7 +2,7 @@
   "homepage": "https://github.com/marcusasplund/slaeditor#readme",
   "license": "MIT",
   "main": "src/index.js",
-  "name": "hyperapp-todo-parcel",
+  "name": "slaeditor",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/marcusasplund/slaeditor.git"
