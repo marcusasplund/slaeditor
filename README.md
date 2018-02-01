@@ -6,9 +6,11 @@
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
-# [Hyperapp](https://github.com/hyperapp/hyperapp) crud todo with [Parcel bundler](https://github.com/parcel-bundler/parcel)
+# [Hyperapp](https://github.com/hyperapp/hyperapp) and [Parcel bundler](https://github.com/parcel-bundler/parcel)
 
 ## [Demo](https://pap.as/slaeditor/)
+
+Read more about it at Medium [here](https://medium.com/@marcusasplund/single-line-application-bc3b9d3c9269)
 
 A single line application 'editor'
 
