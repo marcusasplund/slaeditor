@@ -4,7 +4,7 @@
 [![Build status](https://travis-ci.org/marcusasplund/slaeditor.svg?branch=master)](https://travis-ci.org/marcusasplund/slaeditor)
 [![dependencies](https://david-dm.org/marcusasplund/slaeditor.svg)](https://david-dm.org/marcusasplund/slaeditor)
 
-[![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+[![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard) 
 
 ## [Demo](https://pap.as/slaeditor/)
 
