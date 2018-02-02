@@ -56,12 +56,15 @@ const state = {
         margin-left: 3px;
       }
       </style>
-      <script type='module'>
-        import {h, app} from 'https://rawgit.com/hyperapp/hyperapp/master/src/index.js';
+      </head>
+      <body>
+        <script src='https://unpkg.com/hyperapp@1.0.2/dist/hyperapp.js'></script>
+        <script>
+        const h = hyperapp.h
+        const app = hyperapp.app
         const state = {
           count: 0
         }
-
         const actions = {
           down: value => state => ({ count: state.count - value }),
           up: value => state => ({ count: state.count + value })
@@ -72,10 +75,9 @@ const state = {
             h("button", { onclick: () => actions.down(1) }, "-"),
             h("button", { onclick: () => actions.up(1) }, "+")
           ])
-
         app(state, actions, view, document.body)
       </script>
-    </head>
+    </body>
   </html>`,
   placeholder: 'Paste your awesome website/app code here'
 }
