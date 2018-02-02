@@ -5,11 +5,7 @@
 [![Build status](https://travis-ci.org/marcusasplund/slaeditor.svg?branch=master)](https://travis-ci.org/marcusasplund/slaeditor)
 [![dependencies](https://david-dm.org/marcusasplund/slaeditor.svg)](https://david-dm.org/marcusasplund/slaeditor)
 
-<<<<<<< HEAD
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-=======
-[![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard) 
->>>>>>> f7f7d4d9af105cb7661b8bc5bf70cbe653dfc261
 
 ## [Demo](https://pap.as/slaeditor/)
 
@@ -18,13 +14,6 @@ Read more about the concept at Medium [here](https://medium.com/@marcusasplund/s
 A single line application 'editor'
 
 Offline support with service worker
-
-<<<<<<< HEAD
-=======
-Made with [Hyperapp](https://github.com/hyperapp/hyperapp) and [Parcel bundler](https://github.com/parcel-bundler/parcel)
-
-TODO: [a bug in parcel](https://github.com/parcel-bundler/parcel/issues/235) rewrites the manifest.json to a js file so the pwa requirements fails.
->>>>>>> f7f7d4d9af105cb7661b8bc5bf70cbe653dfc261
 
 ## installation
 
