@@ -24,7 +24,43 @@ textarea {
   font-family: 'Monaco', courier, monospace;
   padding: 20px;
 }
-
+button {
+  background-color: #9b4dca;
+  border: 0.1rem solid #9b4dca;
+  border-radius: .4rem;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+button:focus, button:hover {
+  background-color: #606c76;
+  border-color: #606c76;
+  color: #fff;
+  outline: 0;
+}
 code {
-  color: #f66;
+    background: #f4f5f6;
+    border-radius: .4rem;
+    font-size: 86%;
+    margin: 0 .2rem;
+    padding: .2rem .5rem;
+    white-space: nowrap;
+    color: #f66;
+}
+pre>code {
+    border-radius: 0;
+    display: block;
+    padding: 1rem 1.5rem;
+    white-space: pre-wrap;
+    height: auto;
+    word-break: break-all;
+}
+pre {
+    background: #f4f5f6;
+    overflow-y: hidden;
 }

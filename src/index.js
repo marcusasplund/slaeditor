@@ -1,11 +1,83 @@
-/* global btoa */
+/* global btoa Event */
 import {h, app} from 'hyperapp'
 import debounce from 'lodash.debounce'
-import './styles/app.scss'
 
 /** @jsx h */
 const state = {
-  parsed: ``
+  parsed: ``,
+  code: '',
+  example: `<html>
+    <head>
+      <style>
+      html {
+        line-height: 1;
+      }
+      body {
+        align-items: center;
+        background-color: #111;
+        display: flex;
+        font-family: Helvetica Neue, sans-serif;
+        height: 100vh;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+      h1 {
+        color: #00caff;
+        font-weight: 100;
+        font-size: 8em;
+        margin: 0;
+        padding-bottom: 15px;
+      }
+      button {
+        background: #111;
+        border-radius: 0px;
+        border: 1px solid #00caff;
+        color: #00caff;
+        font-size: 2em;
+        font-weight: 100;
+        margin: 0;
+        outline: none;
+        padding: 5px 15px;
+        transition: background .2s;
+      }
+      button:hover, button:active, button:disabled {
+        background: #00caff;
+        color: #111;
+      }
+      button:active {
+        outline: 2px solid #00caff;
+      }
+      button:focus {
+        border: 1px solid #00caff;
+      }
+      button + button {
+        margin-left: 3px;
+      }
+      </style>
+      <script type='module'>
+        import {h, app} from 'https://rawgit.com/hyperapp/hyperapp/master/src/index.js';
+        const state = {
+          count: 0
+        }
+
+        const actions = {
+          down: value => state => ({ count: state.count - value }),
+          up: value => state => ({ count: state.count + value })
+        }
+        const view = (state, actions) =>
+          h("div", {}, [
+            h("h1", {}, state.count),
+            h("button", { onclick: () => actions.down(1) }, "-"),
+            h("button", { onclick: () => actions.up(1) }, "+")
+          ])
+
+        app(state, actions, view, document.body)
+      </script>
+    </head>
+  </html>`,
+  placeholder: 'Paste your awesome website/app code here'
 }
 const go = (str) => {
   console.log(str)
@@ -13,24 +85,33 @@ const go = (str) => {
   return btoa(str)
 }
 const actions = {
+  set: x => x,
   parseString: str => state => ({
     parsed: go(str)
-  })
+  }),
+  copyExampleCode: () => (state, actions) => {
+    actions.set({code: state.example})
+    let event = new Event('input')
+    document.getElementById('input').dispatchEvent(event)
+  }
 }
 
-const TextArea = ({parse}) => (
+const TextArea = ({state, parse}) => (
   <textarea
+    id='input'
     oninput={debounce(parse, 200)}
-    placeholder='Paste your awesome website/app code here' />
+    placeholder={state.placeholder}>
+    {state.code}
+  </textarea>
 )
 
 const view = (state, actions) => (
   <div id='editor'>
-    <TextArea parse={e => actions.parseString(e.target.value)} />
+    <TextArea state={state} parse={e => actions.parseString(e.target.value)} />
     <div>
       <a href={`data:text/html;base64, ${state.parsed}`}>
         <p>
-          This is a link you can right click and open in a new tab*<br />
+          This is a link you in some browsers can right click and open in a new tab*<br />
         </p>
       </a>
       <p>
@@ -47,11 +128,12 @@ const view = (state, actions) => (
       </pre>
       <hr />
       <p>
-        And below is some code to try it out; paste in the left pane, copy the result produced above and paste in a browser address bar
+        To try it out; copy the example code below, paste in the left pane, then copy the base64 result produced above and paste in a browser address bar
+        <button disabled={state.parsed} onclick={e => actions.copyExampleCode()}>copy to textarea</button>
       </p>
       <pre>
         <code>
-           &lt;h1&gt; hello, i am a SLA application&lt;/h1&gt;
+          {state.example}
         </code>
       </pre>
     </div>

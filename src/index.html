@@ -22,12 +22,13 @@
   <meta content="https://pap.as/slaeditor" property="og:url">
   <meta content="https://pap.as/slaeditor/android-chrome-512x512.png" property="og:image">
   <meta content="SLA editor" property="og:site_name">
+  <link rel="stylesheet" href="./app.css">
 </head>
 <body>
   <script src="./index.js" async></script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
+      navigator.serviceWorker.register('./sw.js')
       .then(function (registration) {
         console.log('Service Worker registration successful with scope: ',
         registration.scope)
