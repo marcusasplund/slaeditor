@@ -106,7 +106,7 @@ export async function release (task) {
     }
   }).target(target)
   await task.source(`${target}/**/*`).rev({
-    ignores: ['.html', '.png', '.svg', '.ico', '.xml', '.json', '.txt', '.ttf', '.otf', '.woff', '.woff2', 'https://rawgit.com/hyperapp/hyperapp/master/src/index.js']
+    ignores: ['.html', '.png', '.svg', '.ico', '.xml', '.json', '.txt', '.ttf', '.otf', '.woff', '.woff2', 'hyperapp.js']
   }).revManifest({dest: releaseTarget, trim: target}).revReplace().target(releaseTarget)
   await task.source(`${releaseTarget}/*.html`).htmlmin().target(releaseTarget)
   await task.serial(['cache'])

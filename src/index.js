@@ -58,7 +58,7 @@ const state = {
       </style>
       </head>
       <body>
-        <script src='https://unpkg.com/hyperapp@1.0.2/dist/hyperapp.js'></script>
+        <script src="https://unpkg.com/hyperapp@1.0.2/dist/hyperapp.js"></script>
         <script>
         const h = hyperapp.h
         const app = hyperapp.app
@@ -81,26 +81,24 @@ const state = {
   </html>`,
   placeholder: 'Paste your awesome website/app code here'
 }
-const go = (str) => {
-  console.log(str)
-  console.log(btoa(str))
-  return btoa(str)
-}
+
 const actions = {
   set: x => x,
   parseString: str => state => ({
-    parsed: go(str)
+    parsed: btoa(str)
   }),
   copyExampleCode: () => (state, actions) => {
-    actions.set({code: state.example})
+    actions.set({
+      code: state.example
+    })
     let event = new Event('input')
-    document.getElementById('input').dispatchEvent(event)
+    document.getElementById('codearea').dispatchEvent(event)
   }
 }
 
 const TextArea = ({state, parse}) => (
   <textarea
-    id='input'
+    id='codearea'
     oninput={debounce(parse, 200)}
     placeholder={state.placeholder}>
     {state.code}
@@ -131,7 +129,7 @@ const view = (state, actions) => (
       <hr />
       <p>
         To try it out; copy the example code below, paste in the left pane, then copy the base64 result produced above and paste in a browser address bar
-        <button disabled={state.parsed} onclick={e => actions.copyExampleCode()}>copy to textarea</button>
+        <button disabled={state.parsed} onclick={e => actions.copyExampleCode()}>copy example to textarea</button>
       </p>
       <pre>
         <code>
