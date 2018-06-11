@@ -58,7 +58,7 @@ const state = {
       </style>
       </head>
       <body>
-        <script src="https://unpkg.com/hyperapp@1.0.2/dist/hyperapp.js"></script>
+        <script src="https://unpkg.com/hyperapp@1.2.6/dist/hyperapp.js"></script>
         <script>
         const h = hyperapp.h
         const app = hyperapp.app
