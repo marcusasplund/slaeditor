@@ -42,7 +42,7 @@
     "workbox-build": "^3.0.0"
   },
   "dependencies": {
-    "hyperapp": "^1.1.2",
+    "hyperapp": "^1.2.6",
     "lodash.debounce": "^4.0.8"
   }
 }
