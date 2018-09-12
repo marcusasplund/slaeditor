@@ -36,7 +36,7 @@
     "rollup-plugin-commonjs": "9.1.6",
     "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-replace": "^2.0.0",
-    "serve": "^10.0.0",
+    "serve": "^10.0.1",
     "taskr": "^1.1.0",
     "taskr-standard": "^1.0.1",
     "workbox-build": "^3.0.0"
