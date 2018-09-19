@@ -1,6 +1,7 @@
 /* global btoa Event */
-import {h, app} from 'hyperapp'
+import { h, app } from 'hyperapp'
 import debounce from 'lodash.debounce'
+import './styles/app.scss'
 
 /** @jsx h */
 const state = {
@@ -58,7 +59,7 @@ const state = {
       </style>
       </head>
       <body>
-        <script src="https://unpkg.com/hyperapp@1.2.6/dist/hyperapp.js"></script>
+        <script src="https://unpkg.com/hyperapp@1.2.9/dist/hyperapp.js"></script>
         <script>
         const h = hyperapp.h
         const app = hyperapp.app
@@ -96,7 +97,7 @@ const actions = {
   }
 }
 
-const TextArea = ({state, parse}) => (
+const TextArea = ({ state, parse }) => (
   <textarea
     id='codearea'
     oninput={debounce(parse, 200)}

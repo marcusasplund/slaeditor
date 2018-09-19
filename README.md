@@ -35,4 +35,4 @@ This will open application at http://localhost:3000/ in browser
     $ yarn build
 
 ````
-This will generate a release directory with your minified/rev'd assets.
+This will generate a build directory with your minified/rev'd assets.
