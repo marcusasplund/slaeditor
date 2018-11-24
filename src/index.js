@@ -1,6 +1,6 @@
 /* global btoa Event */
 import { h, app } from 'hyperapp'
-import debounce from 'lodash.debounce'
+import { debounce } from 'debounce'
 import './styles/app.scss'
 
 /** @jsx h */
