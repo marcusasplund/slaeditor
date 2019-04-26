@@ -22,7 +22,7 @@
     "swDest": "service-worker.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
+    "@babel/core": "^7.4.4",
     "@babel/preset-env": "7.4.3",
     "babel-eslint": "^10.0.1",
     "babel-preset-env": "^1.7.0",
