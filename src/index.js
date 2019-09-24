@@ -126,6 +126,21 @@ const Result = ({ state }) => (
   </section>
 )
 
+const Test = ({ state }) => (
+  <section>
+  <p>
+    To try it out; copy the example code below, paste in the left pane, then copy the base64 result produced above and paste in a browser address bar
+    <br />
+    <button onClick={CopyExampleCode}>copy example to textarea</button>
+  </p>
+  <pre>
+    <code>
+      {state.example}
+    </code>
+  </pre>
+  </section>
+)
+
 app({
   init: initialState,
   view: state => (
@@ -133,16 +148,7 @@ app({
       <TextArea state={state} />
       <div>
         {state.parsed ? <Result state={state} /> : ''}
-        <p>
-          To try it out; copy the example code below, paste in the left pane, then copy the base64 result produced above and paste in a browser address bar
-          <br />
-          <button onClick={CopyExampleCode}>copy example to textarea</button>
-        </p>
-        <pre>
-          <code>
-            {state.example}
-          </code>
-        </pre>
+        {state.code === example ? '' : <Test state={state} />}
       </div>
       <p>You can look at the code <a href='https://github.com/marcusasplund/slaeditor'>here</a></p>
     </div>),
