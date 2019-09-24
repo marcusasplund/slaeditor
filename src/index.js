@@ -128,16 +128,16 @@ const Result = ({ state }) => (
 
 const Test = ({ state }) => (
   <section>
-  <p>
+    <p>
     To try it out; copy the example code below, paste in the left pane, then copy the base64 result produced above and paste in a browser address bar
-    <br />
-    <button onClick={CopyExampleCode}>copy example to textarea</button>
-  </p>
-  <pre>
-    <code>
-      {state.example}
-    </code>
-  </pre>
+      <br />
+      <button onClick={CopyExampleCode}>copy example to textarea</button>
+    </p>
+    <pre>
+      <code>
+        {state.example}
+      </code>
+    </pre>
   </section>
 )
 
