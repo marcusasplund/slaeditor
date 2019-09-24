@@ -83,6 +83,7 @@ const initialState = {
 
 const ParseString = (state, value) => ({
   ...state,
+  code: value,
   parsed: btoa(value)
 })
 
