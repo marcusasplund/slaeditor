@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/marcusasplund/slaeditor#readme",
+  "homepage": "https://pap.as/slaeditor/",
   "license": "MIT",
   "main": "src/index.js",
   "name": "slaeditor",
@@ -11,28 +11,24 @@
     "start": "standard && parcel src/index.html -p 3000 --open",
     "build": "rm -rf /release && standard && parcel build src/index.html -d build --public-url ./"
   },
-  "version": "0.0.3",
+  "version": "1.0.0",
   "author": "Marcus Asplund <marcus@greatname.se> (@marcusasplund)",
   "bugs": {
     "url": "https://github.com/marcusasplund/slaeditor/issues"
   },
-  "homepage": "https://pap.as/slaeditor/",
   "cache": {
     "inDev": true,
     "swDest": "service-worker.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.0",
-    "@babel/preset-env": "7.5.0",
-    "babel-eslint": "^10.0.1",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.6.2",
     "parcel-bundler": "^1.12.3",
-    "parcel-plugin-sw-cache": "^0.3.0",
-    "standard": "*",
-    "node-sass": "^4.12.0"
+    "parcel-plugin-sw-cache": "^0.3.1",
+    "sass": "^1.22.12",
+    "standard": "*"
   },
   "dependencies": {
-    "hyperapp": "^1.2.9",
-    "debounce": "^1.2.0"
+    "@hyperapp/events": "^0.0.3",
+    "hyperapp": "^2.0.1"
   }
 }
