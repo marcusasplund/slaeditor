@@ -77,18 +77,20 @@ const example = `<html>
 const initialState = {
   parsed: '',
   code: '',
+  copied: false,
   example: example,
   placeholder: 'Paste your awesome website/app code here'
 }
 
 const ParseString = (state, value) => ({
   ...state,
-  code: value,
+  copied: false,
   parsed: btoa(value)
 })
 
 const CopyExampleCode = state => ({
   ...state,
+  copied: true,
   code: example,
   parsed: btoa(example)
 })
@@ -149,7 +151,7 @@ app({
       <TextArea state={state} />
       <div>
         {state.parsed ? <Result state={state} /> : ''}
-        {state.code === example ? '' : <Test state={state} />}
+        {state.copied ? '' : <Test state={state} />}
       </div>
       <p>You can look at the code <a href='https://github.com/marcusasplund/slaeditor'>here</a></p>
     </div>),
