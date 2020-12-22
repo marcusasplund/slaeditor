@@ -19,7 +19,6 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "parcel-bundler": "^1.12.4",
-    "parcel-plugin-sw-precache": "^1.1.2",
     "sass": "^1.30.0",
     "standard": "*"
   },

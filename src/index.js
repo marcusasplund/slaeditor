@@ -8,85 +8,81 @@ const saveToLocalStorage = (state) => localStorage.setItem(storageKey, JSON.stri
 
 const getFromLocalStorage = () => JSON.parse(localStorage.getItem(storageKey))
 
-const exampleCSS = ''
+const exampleCSS = `
+html {
+  line-height: 1;
+}
+body {
+  align-items: center;
+  background-color: #111;
+  display: flex;
+  font-family: Helvetica Neue, sans-serif;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+h1 {
+  color: #00caff;
+  font-weight: 100;
+  font-size: 8em;
+  margin: 0;
+  padding-bottom: 15px;
+}
+button {
+  background: #111;
+  border-radius: 0;
+  border: 1px solid #00caff;
+  color: #00caff;
+  font-size: 2em;
+  font-weight: 100;
+  margin: 0;
+  outline: none;
+  padding: 5px 15px;
+  transition: background .2s;
+}
+button:hover, button:active, button:disabled {
+  background: #00caff;
+  color: #111;
+}
+button:active {
+  outline: 2px solid #00caff;
+}
+button:focus {
+  border: 1px solid #00caff;
+}
+button + button {
+  margin-left: 3px;
+}
+`
 
 const exampleHTML = '<div id="app"></div>'
 
 const exampleJS = `
-class Todo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      list: [],
-      text: ''
-    }
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.removeItem = this.removeItem.bind(this);
-  }
+import { h, text, app } from "https://unpkg.com/hyperapp"
 
-  handleSubmit(e) {
-    e.preventDefault();
-    if (!this.state.text) {
-       return false;
-    }
-
-    this.setState(prevState => ({
-      list: prevState.list.concat(this.state.text),
-      text: ''
-    }))
-  }
-
-  handleChange(e) {
-    this.setState({
-      text: e.target.value
-    })
-  }
-
-  removeItem(item) {
-    const newList = this.state.list.filter(text => text !== item)
-    this.setState({ list: newList})
-  }
-
-  render() {
-    return (
-      <div>
-       <pre><code>{JSON.stringify(this.state)}</code></pre>
-        <h1>Todo list</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input value={this.state.text} onChange={e => this.handleChange(e)} />
-          <button>Add</button>
-          <table>
-            {this.state.list.map(item => {
-              return (
-                <tr key={item}>
-                  <td>{item}</td>
-                  <td><button onClick={() => this.removeItem(item)}>Delete</button></td>
-                </tr>)
-            })}
-          </table>
-        </form>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Todo />, document.getElementById('app'));`
+app({
+  init: 0,
+  view: state =>
+    h("div", {}, [
+      h("h1", {}, text(state)),
+      h("button", { onclick: state => state - 1 }, text('-')),
+      h("button", { onclick: state => state + 1 }, text('+'))
+    ]),
+  node: document.getElementById("app")
+})`
 
 const code = (style, html, js) => `
 <html>
   <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css" integrity="sha512-xiunq9hpKsIcz42zt0o2vCo34xV0j6Ny8hgEylN3XBglZDtTZ2nwnqF/Z/TTCc18sGdvCjbFInNd++6q3J0N6g==" crossorigin="anonymous" />
     <style>
     ${style}
     </style>
     </head>
     <body>
     ${html}
-    <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
-    <script type="text/babel">
+      <script type="module">
       ${js}
       </script>
   </body>
