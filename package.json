@@ -16,18 +16,15 @@
   "bugs": {
     "url": "https://github.com/marcusasplund/slaeditor/issues"
   },
-  "cache": {
-    "inDev": true,
-    "swDest": "service-worker.js"
-  },
   "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "parcel-bundler": "^1.12.3",
-    "parcel-plugin-sw-cache": "^0.3.1",
+    "@babel/core": "^7.12.10",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-sw-precache": "^1.1.2",
+    "sass": "^1.30.0",
     "standard": "*"
   },
   "dependencies": {
     "@hyperapp/events": "^0.0.4",
-    "hyperapp": "^2.0.1"
+    "hyperapp": "^2.0.8"
   }
 }

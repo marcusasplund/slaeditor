@@ -5,13 +5,16 @@ html, body, #editor {
   color: #333;
 }
 
-textarea, #editor div {
+#right-panel, #left-panel {
   display: inline-block;
-  width: 49%;
+  width: 50vw;
   height: 100%;
   vertical-align: top;
   box-sizing: border-box;
-  padding: 0 20px;
+  padding: 0;
+}
+#instructions {
+    padding: 0 20px;
 }
 
 textarea {
@@ -23,6 +26,8 @@ textarea {
   font-size: 14px;
   font-family: 'Monaco', courier, monospace;
   padding: 20px;
+    width: calc(100% - 40px);
+    height: 100%;
 }
 button {
   background-color: #9b4dca;
@@ -32,7 +37,7 @@ button {
   cursor: pointer;
   display: inline-block;
   font-weight: 700;
-  padding: 0.2rem;
+  padding: 0.5rem;
   margin-top: 0.3rem; 
   text-align: center;
   text-decoration: none;
@@ -74,4 +79,54 @@ pre>code {
 pre {
     background: #f4f5f6;
     overflow-y: hidden;
+}
+iframe {
+    width: 100%;
+    height: 100vh;
+    border: 0;
+}
+.tabs {
+    position: relative;
+    min-height: 200px; /* This part sucks */
+    clear: both;
+    margin: 35px 0 25px;
+    background: white;
+}
+.tab {
+    float: left;
+
+}
+.tab label {
+    background: #eee;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-left: -1px;
+    position: relative;
+    left: 1px;
+    top: -29px;
+    transition: background-color .17s linear;
+}
+.tab [type=radio] {
+    display: none;
+}
+.content {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    background: white;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    transition: opacity .6s linear;
+    opacity: 0;
+}
+[type=radio]:checked ~ label {
+    background: white;
+    border-bottom: 1px solid white;
+    z-index: 2;
+}
+[type=radio]:checked ~ label ~ .content {
+    z-index: 1;
+    opacity: 1;
 }

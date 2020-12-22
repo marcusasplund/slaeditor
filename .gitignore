@@ -10,3 +10,7 @@ node_modules
 dist
 build
 .cache
+yarn.lock
+.parcel-cache
+.idea
+
