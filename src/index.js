@@ -77,7 +77,7 @@ const initialState = {
   parsed: '',
   code: '',
   copied: false,
-  example: example,
+  example,
   placeholder: 'Paste your awesome website/app code here'
 }
 
@@ -94,11 +94,12 @@ const CopyExampleCode = state => ({
   parsed: btoa(example)
 })
 
-const TextArea = ({parsed, placeholder, code}) => (
+const TextArea = ({ parsed, placeholder, code }) => (
   h('textarea', {
     id: 'codearea',
-    oninput: ParseString, parsed,
-    placeholder: placeholder
+    oninput: ParseString,
+    parsed,
+    placeholder
   }, text(code)
   )
 )

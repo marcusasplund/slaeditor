@@ -1080,11 +1080,6 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@hyperapp/events@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@hyperapp/events/-/events-2.0.0.tgz#923bbc7a6dd319e7ac4a806fa4078282c8810354"
-  integrity sha512-MfEUAYLrrrjD52/EbZWy3jVoLGxD86acUSUikrT9zldimRq+RlvrM/e139WuGmmon1U63SgRyaTawaWqAEcfsA==
-
 "@jridgewell/gen-mapping@^0.3.0", "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz#7e02e6eb5df901aaedb08514203b096614024098"
