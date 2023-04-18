@@ -1,6 +1,6 @@
 /* global btoa */
 /** @jsx h */
-import { h, app } from 'hyperapp'
+import { h, app, text } from 'hyperapp'
 import { targetValue } from '@hyperapp/events'
 import './styles/app.scss'
 
@@ -58,15 +58,15 @@ const example = `<html>
     <body>
       <div id="app"></div>
       <script type="module">
-        import { h, app } from "https://unpkg.com/hyperapp"
+        import { h, app, text } from "https://unpkg.com/hyperapp"
 
         app({
           init: 0,
           view: state =>
             h("div", {}, [
-              h("h1", {}, state),
-              h("button", { onClick: state => state - 1 }, "-"),
-              h("button", { onClick: state => state + 1 }, "+")
+              h("h1", {}, text(state)),
+              h("button", { onclick: state => state - 1 }, text("-")),
+              h("button", { onclick: state => state + 1 }, text("+"))
             ]),
           node: document.getElementById("app")
         })
@@ -95,65 +95,45 @@ const CopyExampleCode = state => ({
   parsed: btoa(example)
 })
 
-const TextArea = ({ state }) => (
-  <textarea
-    id='codearea'
-    onInput={[ParseString, targetValue]}
-    placeholder={state.placeholder}
-  >
-    {state.code}
-  </textarea>
+const TextArea = state => (
+  h('textarea', {
+    id: 'codearea',
+    oninput: [ParseString, targetValue],
+    placeholder: state.placeholder
+  }, text(state.code)
+  )
 )
 
-const Result = ({ state }) => (
-  <section>
-    <a href={`data:text/html;base64, ${state.parsed}`}>
-      <p>
-      In some browsers you can right click this link and open in a new tab*<br />
-      </p>
-    </a>
-    <p>
-      <small>*Due to browser restrictions it does not work to open such a link in the same window</small>
-    </p>
-    <hr />
-    <p>
-    Below is your app as a base64-encoded link that you can copy and paste in your browsers adress bar
-      <br />
-    </p>
-    <pre>
-      <code>
-    data:text/html;base64, {state.parsed}
-      </code>
-    </pre>
-    <hr />
-  </section>
+const Result = state => (
+  h('section', {}, [
+    h('p', {}, text('Below is your app as a base64-encoded link that you can copy and paste in your browsers adress bar')),
+    h('pre', {}, h('code', {}, text(`data:text/html;base64, ${state.parsed}`))),
+    h('hr', {})
+  ])
 )
 
-const Test = ({ state }) => (
-  <section>
-    <p>
-    To try it out; copy the example code below, paste in the left pane, then copy the base64 result produced above and paste in a browser address bar
-      <br />
-      <button onClick={CopyExampleCode}>copy example to textarea</button>
-    </p>
-    <pre>
-      <code>
-        {state.example}
-      </code>
-    </pre>
-  </section>
+const Test = state => (
+  h('section', {}, [
+    h('p', {}, text('To try it out; copy the example code below, paste in the left pane, then copy the base64 result produced above and paste in a browser address bar')),
+    h('br', {}),
+    h('button', { onclick: CopyExampleCode }, text('copy example to editorarea')),
+    h('pre', {}, h('code', {}, text(state.example)))
+  ])
 )
 
 app({
   init: initialState,
   view: state => (
-    <div id='editor'>
-      <TextArea state={state} />
-      <div>
-        {state.parsed ? <Result state={state} /> : ''}
-        {state.copied ? '' : <Test state={state} />}
-      </div>
-      <p>You can look at the code <a href='https://github.com/marcusasplund/slaeditor'>here</a></p>
-    </div>),
+    h('div', {
+      id: 'editor'
+    }, [
+      TextArea(state),
+      h('div', {}, [
+        state.parsed ? Result(state) : '',
+        state.copied ? '' : Test(state),
+        h('p', {}, text('You can look at the code ')),
+        h('a', { href: 'https://github.com/marcusasplund/slaeditor' }, text('here'))
+      ]),
+    ])),
   node: document.getElementById('app')
 })
