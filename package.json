@@ -8,27 +8,25 @@
     "url": "git+ssh://git@github.com/marcusasplund/slaeditor.git"
   },
   "scripts": {
-    "start": "standard && parcel src/index.html -p 3000 --open",
-    "build": "rm -rf /release && standard && parcel build src/index.html -d build --public-url ./"
+    "dev": "standard && vite --host",
+    "build": "standard && vite build",
+    "serve": "standard && vite preview"
   },
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Marcus Asplund <marcus@greatname.se> (@marcusasplund)",
   "bugs": {
     "url": "https://github.com/marcusasplund/slaeditor/issues"
   },
-  "cache": {
-    "inDev": true,
-    "swDest": "service-worker.js"
-  },
   "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "parcel-bundler": "^1.12.3",
-    "parcel-plugin-sw-cache": "^0.3.1",
+    "@babel/core": "^7.21.4",
     "sass": "^1.62.0",
-    "standard": "*"
+    "standard": "*",
+    "vite": "^4.2.2",
+    "vite-plugin-pwa": "^0.14.7",
+    "workbox-build": "^6.5.4",
+    "workbox-window": "^6.5.4"
   },
   "dependencies": {
-    "@hyperapp/events": "^2.0.0",
-    "hyperapp": "^2.0.1"
+    "hyperapp": "^2.0.22"
   }
 }

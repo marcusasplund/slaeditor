@@ -1,7 +1,6 @@
 /* global btoa */
 /** @jsx h */
 import { h, app, text } from 'hyperapp'
-import { targetValue } from '@hyperapp/events'
 import './styles/app.scss'
 
 const example = `<html>
@@ -82,10 +81,10 @@ const initialState = {
   placeholder: 'Paste your awesome website/app code here'
 }
 
-const ParseString = (state, value) => ({
+const ParseString = (state, event) => ({
   ...state,
   copied: false,
-  parsed: btoa(value)
+  parsed: btoa(event.target.value)
 })
 
 const CopyExampleCode = state => ({
@@ -95,12 +94,12 @@ const CopyExampleCode = state => ({
   parsed: btoa(example)
 })
 
-const TextArea = state => (
+const TextArea = ({parsed, placeholder, code}) => (
   h('textarea', {
     id: 'codearea',
-    oninput: [ParseString, targetValue],
-    placeholder: state.placeholder
-  }, text(state.code)
+    oninput: ParseString, parsed,
+    placeholder: placeholder
+  }, text(code)
   )
 )
 
@@ -133,7 +132,7 @@ app({
         state.copied ? '' : Test(state),
         h('p', {}, text('You can look at the code ')),
         h('a', { href: 'https://github.com/marcusasplund/slaeditor' }, text('here'))
-      ]),
+      ])
     ])),
   node: document.getElementById('app')
 })
