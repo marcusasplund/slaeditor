@@ -2,8 +2,6 @@
 
 
 [![GitHub issues](https://img.shields.io/github/issues/marcusasplund/slaeditor.svg)](https://github.com/marcusasplund/slaeditor/issues)
-[![Build status](https://travis-ci.org/marcusasplund/slaeditor.svg?branch=master)](https://travis-ci.org/marcusasplund/slaeditor)
-[![dependencies](https://david-dm.org/marcusasplund/slaeditor.svg)](https://david-dm.org/marcusasplund/slaeditor)
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
@@ -24,7 +22,7 @@ Offline support with service worker
 
     $ yarn
 
-    $ yarn start
+    $ yarn dev
 ````
 
 This will open application at http://localhost:3000/ in browser
