@@ -1,8 +1,14 @@
 /* global btoa */
 /** @jsx h */
+/**
+ * This script provides a web-based tool that converts HTML code into a base64-encoded link.
+ * The link can be copied and pasted into a browser's address bar to view the web content.
+ */
+
 import { h, app, text } from 'hyperapp'
 import './styles/app.scss'
 
+// Example HTML code to demonstrate the functionality
 const example = `<html>
   <head>
     <style>
@@ -73,6 +79,7 @@ const example = `<html>
   </body>
 </html>`
 
+// Initial state of the application
 const initialState = {
   parsed: '',
   code: '',
@@ -81,46 +88,77 @@ const initialState = {
   placeholder: 'Paste your awesome website/app code here'
 }
 
+/**
+ * Updates the state with the base64-encoded version of the input HTML code
+ *
+ * @param {object} state - The current state of the app.
+ * @param {object} event - The input event containing the HTML code.
+ * @returns {object} The updated state.
+ */
 const ParseString = (state, event) => ({
   ...state,
   copied: false,
   parsed: btoa(event.target.value)
 })
 
-const CopyExampleCode = state => ({
+/**
+ * Copies the example HTML code to the editor area
+ *
+ * @param {object} state - The current state of the app.
+ * @returns {object} The updated state.
+ */
+const CopyExampleCode = (state) => ({
   ...state,
   copied: true,
   code: example,
   parsed: btoa(example)
 })
 
+/**
+ * Creates a textarea element for the input HTML code
+ *
+ * @param {object} props - The properties for the textarea element.
+ * @returns {object} The textarea element.
+ */
 const TextArea = ({ parsed, placeholder, code }) => (
   h('textarea', {
     id: 'codearea',
     oninput: ParseString,
     parsed,
     placeholder
-  }, text(code)
-  )
+  }, text(code))
 )
 
-const Result = state => (
+/**
+ * Creates a section element that displays the base64-encoded link
+ *
+ * @param {object} props - The property for the section element.
+ * @returns {object} The section element.
+ */
+const Result = ({ parsed }) => (
   h('section', {}, [
-    h('p', {}, text('Below is your app as a base64-encoded link that you can copy and paste in your browsers adress bar')),
-    h('pre', {}, h('code', {}, text(`data:text/html;base64, ${state.parsed}`))),
+    h('p', {}, text('Below is your app as a base64-encoded link that you can copy and paste in your browsers address bar')),
+    h('pre', {}, h('code', {}, text(`data:text/html;base64, ${parsed}`))),
     h('hr', {})
   ])
 )
 
-const Test = state => (
+/**
+ * Creates a section element that demonstrates how to use the tool
+ *
+ * @param {object} props - The property for the section element.
+ * @returns {object} The section element.
+ */
+const Test = ({ example }) => (
   h('section', {}, [
     h('p', {}, text('To try it out; copy the example code below, paste in the left pane, then copy the base64 result produced above and paste in a browser address bar')),
     h('br', {}),
     h('button', { onclick: CopyExampleCode }, text('copy example to editorarea')),
-    h('pre', {}, h('code', {}, text(state.example)))
+    h('pre', {}, h('code', {}, text(example)))
   ])
 )
 
+// Initialize the app with the initial state and the view function
 app({
   init: initialState,
   view: state => (
@@ -134,6 +172,7 @@ app({
         h('p', {}, text('You can look at the code ')),
         h('a', { href: 'https://github.com/marcusasplund/slaeditor' }, text('here'))
       ])
-    ])),
+    ])
+  ),
   node: document.getElementById('app')
 })

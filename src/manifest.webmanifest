@@ -22,5 +22,10 @@
     "src": "./android-chrome-512x512.png",
     "sizes": "512x512",
     "type": "image/png"
+  }, {
+    "src": "./assets/safari-pinned-tab-b9e4e9ec.svg",
+    "sizes": "196x196",
+    "type": "image/svg",
+    "purpose": "any maskable"
   }]
 }
