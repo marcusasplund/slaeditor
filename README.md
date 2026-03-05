@@ -3,8 +3,6 @@
 
 [![GitHub issues](https://img.shields.io/github/issues/marcusasplund/slaeditor.svg)](https://github.com/marcusasplund/slaeditor/issues)
 
-[![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
 ## [Demo](https://pap.as/slaeditor/)
 
 Read more about the concept at Medium [here](https://medium.com/@marcusasplund/single-line-application-bc3b9d3c9269)
