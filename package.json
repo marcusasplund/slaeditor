@@ -8,21 +8,24 @@
     "url": "git+ssh://git@github.com/marcusasplund/slaeditor.git"
   },
   "scripts": {
-    "dev": "standard && vite --host",
-    "build": "standard && vite build",
-    "serve": "standard && vite preview"
+    "dev": "vite --host",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "version": "2.0.0",
-  "author": "Marcus Asplund <marcus@greatname.se> (@marcusasplund)",
+  "author": "Marcus Asplund <rootfood@gmail.com> (@marcusasplund)",
   "bugs": {
     "url": "https://github.com/marcusasplund/slaeditor/issues"
   },
   "devDependencies": {
-    "standard": "*",
-    "vite": "^6.3.5",
-    "vite-plugin-pwa": "^1.2.0"
+    "vite": "7.3.1",
+    "vite-plugin-pwa": "1.2.0"
   },
   "dependencies": {
     "hyperapp": "^2.0.22"
+  },
+  "overrides": {
+    "@rollup/plugin-terser": "1.0.0",
+    "serialize-javascript": "^7.0.3"
   }
 }

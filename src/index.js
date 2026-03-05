@@ -6,7 +6,7 @@
  */
 
 import { h, app, text } from 'hyperapp'
-import './styles/app.scss'
+import './styles/app.css'
 
 // Example HTML code to demonstrate the functionality
 const example = `<html>
