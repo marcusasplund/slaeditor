@@ -11,24 +11,34 @@ A single line application 'editor'
 
 Offline support with service worker
 
-## installation
+## Installation
 
-````bash
-    $ git clone https://github.com/marcusasplund/slaeditor.git
+```sh
+git clone https://github.com/marcusasplund/slaeditor.git
+cd slaeditor
+npm install
+npm run dev
+```
 
-    $ cd slaeditor
+Vite prints the local URL when the development server starts.
 
-    $ yarn
+The project records version-specific install-script approvals for `esbuild` and
+`fsevents` in `package.json`. Review pending scripts with:
 
-    $ yarn dev
-````
+```sh
+npm install-scripts ls
+```
 
-This will open application at http://localhost:3000/ in browser
+After reviewing a package, approve it with:
 
-## build a release
+```sh
+npm install-scripts approve <pkg>
+```
 
-````bash
-    $ yarn build
+## Build
 
-````
-This will generate a build directory with your minified/rev'd assets.
+```sh
+npm run build
+```
+
+This generates the production assets in `dist/`.
