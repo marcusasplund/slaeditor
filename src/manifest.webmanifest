@@ -2,9 +2,9 @@
   "dir": "ltr",
   "lang": "en",
   "name": "SLA editor",
-  "scope": "./",
+  "scope": "../",
   "display": "fullscreen",
-  "start_url": "./",
+  "start_url": "../",
   "short_name": "SLA",
   "theme_color": "white",
   "description": "SLA editor",
@@ -23,7 +23,7 @@
     "sizes": "512x512",
     "type": "image/png"
   }, {
-    "src": "./assets/safari-pinned-tab-b9e4e9ec.svg",
+    "src": "./safari-pinned-tab.svg",
     "sizes": "196x196",
     "type": "image/svg",
     "purpose": "any maskable"

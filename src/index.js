@@ -83,7 +83,8 @@ const example = `<html>
 const initialState = {
   parsed: '',
   code: '',
-  copied: false,
+  exampleLoaded: false,
+  copyStatus: '',
   example,
   placeholder: 'Paste your awesome website/app code here'
 }
@@ -97,7 +98,8 @@ const initialState = {
  */
 const ParseString = (state, event) => ({
   ...state,
-  copied: false,
+  exampleLoaded: false,
+  copyStatus: '',
   parsed: btoa(event.target.value)
 })
 
@@ -109,10 +111,32 @@ const ParseString = (state, event) => ({
  */
 const CopyExampleCode = (state) => ({
   ...state,
-  copied: true,
+  exampleLoaded: true,
+  copyStatus: '',
   code: example,
   parsed: btoa(example)
 })
+
+const UpdateCopyStatus = (state, copyStatus) => ({
+  ...state,
+  copyStatus
+})
+
+const CopyDataURL = (dispatch, dataUrl) => {
+  if (!navigator.clipboard?.writeText) {
+    dispatch(UpdateCopyStatus, 'failed')
+    return
+  }
+
+  navigator.clipboard.writeText(dataUrl)
+    .then(() => dispatch(UpdateCopyStatus, 'copied'))
+    .catch(() => dispatch(UpdateCopyStatus, 'failed'))
+}
+
+const StartCopy = (state, dataUrl) => ([
+  { ...state, copyStatus: 'copying' },
+  [CopyDataURL, dataUrl]
+])
 
 /**
  * Creates a textarea element for the input HTML code
@@ -123,6 +147,7 @@ const CopyExampleCode = (state) => ({
 const TextArea = ({ parsed, placeholder, code }) => (
   h('textarea', {
     id: 'codearea',
+    'aria-label': 'HTML source',
     oninput: ParseString,
     parsed,
     placeholder
@@ -135,11 +160,25 @@ const TextArea = ({ parsed, placeholder, code }) => (
  * @param {object} props - The property for the section element.
  * @returns {object} The section element.
  */
-const Result = ({ parsed }) => (
-  h('section', {}, [
-    h('p', {}, text('Below is your app as a base64-encoded link that you can copy and paste in your browsers address bar')),
+const Result = ({ parsed, copyStatus }) => (
+  h('section', { class: 'result-section' }, [
+    h('p', {}, text('Copy this data URL, then paste it into your browser address bar to run your app.')),
+    h('div', { class: 'copy-actions' }, [
+      h('button', {
+        type: 'button',
+        onclick: [StartCopy, `data:text/html;base64, ${parsed}`]
+      }, text(copyStatus === 'copied' ? 'Copied' : 'Copy URL')),
+      h('span', { class: 'copy-status', role: 'status', 'aria-live': 'polite' }, text(
+        copyStatus === 'copying'
+          ? 'Copying URL...'
+          : copyStatus === 'copied'
+            ? 'Copied to clipboard.'
+            : copyStatus === 'failed'
+              ? 'Clipboard unavailable. Select the URL below to copy it.'
+              : ''
+      ))
+    ]),
     h('pre', {}, h('code', {}, text(`data:text/html;base64, ${parsed}`))),
-    h('hr', {})
   ])
 )
 
@@ -150,10 +189,9 @@ const Result = ({ parsed }) => (
  * @returns {object} The section element.
  */
 const Test = ({ example }) => (
-  h('section', {}, [
-    h('p', {}, text('To try it out; copy the example code below, paste in the left pane, then copy the base64 result produced above and paste in a browser address bar')),
-    h('br', {}),
-    h('button', { onclick: CopyExampleCode }, text('copy example to editorarea')),
+  h('section', { class: 'starter' }, [
+    h('p', {}, text('Need a starting point? Load the sample into the editor.')),
+    h('button', { onclick: CopyExampleCode }, text('Load example')),
     h('pre', {}, h('code', {}, text(example)))
   ])
 )
@@ -165,12 +203,29 @@ app({
     h('div', {
       id: 'editor'
     }, [
-      TextArea(state),
-      h('div', {}, [
+      h('section', { class: 'source-pane', 'aria-labelledby': 'source-heading' }, [
+        h('header', { class: 'pane-header' }, [
+          h('div', {}, [
+            h('p', { class: 'eyebrow' }, text('SOURCE')),
+            h('h1', { id: 'source-heading' }, text('SLA editor'))
+          ]),
+          h('span', { class: 'language-tag' }, text('HTML'))
+        ]),
+        TextArea(state)
+      ]),
+      h('section', { class: 'output-pane', 'aria-labelledby': 'output-heading' }, [
+        h('header', { class: 'pane-header' }, [
+          h('div', {}, [
+            h('p', { class: 'eyebrow' }, text('OUTPUT')),
+            h('h2', { id: 'output-heading' }, text(state.parsed ? 'Data URL' : 'Build a data URL'))
+          ])
+        ]),
         state.parsed ? Result(state) : '',
-        state.copied ? '' : Test(state),
-        h('p', {}, text('You can look at the code ')),
-        h('a', { href: 'https://github.com/marcusasplund/slaeditor' }, text('here'))
+        state.exampleLoaded ? '' : Test(state),
+        h('footer', { class: 'app-footer' }, [
+          h('span', {}, text('Single-line applications')),
+          h('a', { href: 'https://github.com/marcusasplund/slaeditor' }, text('View source'))
+        ])
       ])
     ])
   ),
