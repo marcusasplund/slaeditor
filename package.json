@@ -8,7 +8,7 @@
     "url": "git+ssh://git@github.com/marcusasplund/slaeditor.git"
   },
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --open",
     "build": "vite build",
     "serve": "vite preview"
   },
